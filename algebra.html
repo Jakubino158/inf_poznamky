@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INF algebra</title>
+    <style>
+        .tab {
+            padding: 0 15px;
+        }
+        .toggle > b {
+            display: block;
+            cursor: pointer;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#funkcia">Funkcia</a>
+                <ul>
+                    <li><a href="#1">Definicia</a></li>
+                    <li><a href="#1.1">Rovnost zobrazeni</a></li>
+                    <li><a href="#1.2">Skladanie zobrazení</a></li>
+                    <li><a href="#1.3">Asociatívnosť skladania zobrazení</a></li>
+                    <li><a href="#1.4">Typy zobrazení</a></li>
+                    <li><a href="#1.5">Identické zobrazenie (identita)</a></li>
+                    <li><a href="#1.6">Inverzné zobrazenie</a></li>
+                    <li><a href="#1.7">Vzor a obraz množiny</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#bin_op">Binárne operácie</a>
+                <ul>
+                    <li><a href="#2.1">Definícia</a></li>
+                    <li><a href="#2.2">Neutrálny prvok (NP)</a></li>
+                    <li><a href="#2.3">Komutatívna BO</a></li>
+                    <li><a href="#2.4">Asociatívna BO</a></li>
+                    <li><a href="#2.5">inverzný prvok</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#bin_op">Grupy a polia</a>
+                <ul>
+                    <li><a href="#2.1">Binárne operácie</a></li>
+        </ul>
+    </nav>
+    <section id="funkcia">
+        <h1>Funkcia</h1>
+        <article id="1">
+            <h2 id="funkcia_def">Definicia</h2>
+            <p>
+                Pod zobrazením z množiny X do množiny Y rozumieme akýkoľvek predpis, ktorý každému prvku množiny X priradí jediný prvok množiny Y
+            </p>
+            <p>
+                Zobrazenie f : X → Y z množiny X do množiny Y je podmnožina f množiny X × Y taká, že ku každému x ∈ X existuje práve jedno y ∈ Y s vlastnosťou (x, y) ∈ f .
+            </p>
+            <p>
+                Množinu X budeme tiež nazývať definičný obor zobrazenia f a množina Y je obor hodnôt zobrazenia f. Namiesto zápisu (x, y) ∈ f budeme používať zápis y = f (x).
+            </p>
+            <p>
+                <b>napriklad:</b>
+                <br>
+                f1 : N → N, f1(n) = 2n + 1
+                <br>
+                f2 : N → N, f2(n) = 2n
+                <br>
+                f3 : N → N, f3(n) =
+                <br>
+                <span class="tab"></span>- n + 1, ak n je párne
+                <br>
+                <span class="tab"></span>- n − 1, ak n je nepárne
+                <br>
+                f : R → R, f (x) = x · sin x
+                <br>
+                g : R → R, g(x) = sin x
+                <br>
+                h : R → R, h(x) = x2
+            </p>
+        </article>
+        <article id="1.1">
+            <h2>Rovnosť zobrazení</h2>
+            <p>
+                Hovoríme, že dve zobrazenia f : X → Y a g : Z → W sa rovnajú, ak X = Z,
+                Y = W a f (x) = g(x) pre každé x ∈ X. (Inými slovami, ak sa rovnajú ich definičné obory,
+                obory hodnôt a obe zobrazenia nadobúdajú v každom bode rovnakú hodnotu.) Rovnosť
+                zobrazení označujeme f = g.
+            </p>
+
+            <p>
+                <b>napriklad:</b>
+                <br>
+                Dve zobrazenia sa môžu rovnať aj keď sú zapísané iným zápisom.
+                <br>
+                Napríklad zobrazenia k, l : R → R určené predpismi k(x) = sin2 x + cos2 x a l(x) = 1 sa rovnajú.
+            </p>
+        </article>
+        <article id="1.2">
+            <h2>Skladanie zobrazení</h2>
+            <p>
+                Ak f : X → <b>Y</b> , g : <b>Y</b> → Z sú zobrazenia, tak zložením zobrazení f a g nazývame zobrazenie g ◦ f : X → Z také, že pre každé x ∈ X platí
+                g ◦ f (x) = g(f (x)).
+            </p>
+            <p>Zobrazenia môžeme skladať iba vtedy, keď obor hodnôt prvého zobrazenia je rovnaký ako
+                definičný obor druhého zobrazenia.</p>
+            <p>pozor, pre zobrazenia vo všeobecnosti neplatí g ◦ h = h ◦ g.</p>
+        </article>
+        <article id="1.3">
+            <h2>Asociatívnosť skladania zobrazení</h2>
+            <b>Tvrdenie:</b>
+            <p>Nech f : X → Y , g : Y → Z, h : Z → W sú zobrazenia, potom (h ◦ g) ◦ f = h ◦ (g ◦ f ).</p>
+            <div class="toggle">
+                <b class="click">Dôkaz:</b>
+                <div class="hide">
+                    <p>Obe zobrazenia, ktoré porovnávame, sú zobrazenia z množiny X do množiny W .
+                        Majú teda rovnaké definičné obory i obory hodnôt. <br>
+                        Zostáva nám teda overiť, či nadobúdajú rovnaké hodnoty. To zistíme jednoduchým výpočtom: <br>
+                        ((h ◦ g) ◦ f )(x) = (h ◦ g)(f (x)) = h(g(f (x)))<br>
+                        (h ◦ (g ◦ f ))(x) = h((g ◦ f )(x)) = h(g(f (x)))
+                    </p>
+                </div>
+            </div>
+        </article>
+        <article id="1.4">
+            <h2>Typy zobrazení:</h2>
+            <p>
+                Nech f : X → Y je zobrazenie. Hovoríme, že f je <b>injektívne (prosté)
+                zobrazenie</b> (alebo tiež injekcia), ak pre všetky x, y ∈ X také, že x ≠ y platí f (x) ≠ f (y). <br>
+                Hovoríme, že f je <b>surjekcia (surjektívne zobrazenie, zobrazenie na)</b>, ak pre každé y ∈ Y
+                existuje také, x ∈ X, že f (x) = y. <br>
+                Hovoríme, že f je <b>bijekcia (bijektívne zobrazenie)</b>, ak f je súčasne injekcia aj surjekcia.
+            </p>
+            <b>Tvrdenie:</b>
+            <p>
+                Zloženie dvoch injekcií je injekcia, zloženie dvoch surjekcií je surjekcia,
+                zloženie dvoch bijekcií je bijekcia.
+            </p>
+            <div class="toggle">
+                <b class="click">Dôkaz:</b>
+                <div class="hide">
+                    <p>Dané zobrazenia označme f : X → Y , g : Y → Z.
+                        <br> <br>
+                        Najprv predpokladajme, že f aj g sú injekcie. Nech ďalej x, y ∈ X majú tú vlastnosť, že
+                        (g ◦ f )(x) = (g ◦ f )(y).
+                        Túto rovnosť môžeme prepísať ako
+                        g(f (x)) = g(f (y)).
+                        Pretože g je injekcia, vyplýva z tejto rovnosti
+                        f (x) = f (y).
+                        Opäť použitím definície injekcie, ale tentokrát pre zobrazenie f , dostaneme
+                        x = y.
+                        Dokázali sme implikáciu (g ◦ f )(x) = (g ◦ f )(y) ⇒ x = y, teda g ◦ f je skutočne injekcia.
+                        <br> <br>
+                        Teraz nech f aj g sú surjekcie. Máme dokázať, že ku každému z ∈ Z existuje x0 ∈ X
+                        také, že g(f (x0)) = z. Z toho, že g je surjekcia, vieme, že existuje y0 ∈ Y také, že g(y0) = z.
+                        Podobne (pretože f je surjekcia), k tomuto y0 vieme nájsť x0 také, že f (x0) = y0. Spojením
+                        týchto dvoch rovností ale dostaneme
+                        g(f (x0)) = g(y0) = z,
+                        teda sme skutočne našli x0, ktoré sa zobrazením g ◦ f zobrazí na z.
+                        <br> <br>
+                        Posledná časť tvrdenia (ktorá hovorí o skladaní bijekcií) ľahko vyplýva z prvých dvoch
+                        častí.</p>
+                </div>
+            </div>
+
+        </article>
+
+        <article id="1.5">
+            <h2>Identické zobrazenie (identita)</h2>
+
+            <p>
+                Zobrazenie id<sub>X</sub> : X → X také, že id<sub>X</sub>(x) = x pre každé x ∈ X sa nazýva
+                identické zobrazenie (identita).
+                <br>
+                Všimnime si, že pre ľubovoľné zobrazenie f : X → Y platí
+                f ◦ id<sub>X</sub> = f a id<sub>Y</sub> ◦ f = f.
+            </p>
+        </article>
+
+        <article id="1.6">
+            <h2>Inverzné zobrazenie</h2>
+            <p>
+                Nech f : X → Y a g : Y → X sú zobrazenia. Ak platí
+                g ◦ f = id<sub>X</sub>
+                f ◦ g = id<sub>Y</sub>
+                tak hovoríme, že zobrazenie g je inverzné zobrazenie k f .
+                <br>
+                Inverzné zobrazenie k zobrazeniu
+                f označujeme f<sup>−1</sup>.
+                <br>
+                Ak k nejakému zobrazeniu existuje inverzné zobrazenie, tak takéto zobrazenie je jediné
+                <br>
+                Vzťahy definujúce inverzné zobrazenie môžeme ekvivalentne prepísať aj tak, že pre každé
+                x ∈ X a pre každé y ∈ Y platí
+                <br>
+                f <sup>−1</sup>(f (x)) = x,
+                <br>
+                f (f <sup>−1</sup>(y)) = y.
+            </p>
+            <b>Tvrdenie:</b>
+            <p>Inverzné zobrazenie k f existuje práve vtedy, keď f je bijekcia.</p>
+
+            <div class="toggle">
+                <b class="click">Dôkaz:</b>
+                <div class="hide">
+                    ⇒
+                    <br>Predpokladajme, že existuje inverzné zobrazenie k zobrazeniu f : X → Y , označme
+                    ho g.
+                    <br>Z definície inverzného zobrazenia dostaneme
+                    f (x<sub>1</sub>) = f (x<sub>2</sub>) ⇒ g(f (x<sub>1</sub>)) = g(f (x<sub>2</sub>)) ⇒ g ◦ f (x<sub>1</sub>) = g ◦ f (x<sub>2</sub>) ⇒ x<sub>1</sub> = x<sub>2</sub>,
+                    čo znamená, že f je prosté.
+                    <br>Ešte potrebujeme ukázať, že ku každému y ∈ Y existuje x<sub>0</sub> ∈ X s vlastnosťou f (x<sub>0</sub>) = y.
+                    <br>Stačí zvoliť x<sub>0</sub> = g(y), pretože (opäť podľa definície inverzného zobrazenia)
+                    f (x<sub>0</sub>) = f (g(y)) = y.
+                    <br> <br>
+                    ⇐
+                    <br>Predpokladajme, že f : X → Y je bijekcia, chceme dokázať, že existuje inverzné
+                    zobrazenie g : Y → X.
+                    <br>Majme ľubovoľné y ∈ Y .
+                    <br>Pretože f je surjekcia, existuje aspoň jedno
+                    x ∈ X také, že f (x) = y.
+                    <br>Pretože f je injekcia, existuje najviac jedno také x – celkove
+                    teda dostávame, že existuje práve jedno x s touto vlastnosťou.
+                    <br>Zobrazenie g teda môžeme
+                    definovať tak, že g(y) je práve ten prvok x, pre ktorý platí f (x) = y. Inak povedané, g je
+                    určené podmienkou
+                    g(y) = x ⇔ f (x) = y.
+                    <br>Ak zobrazenie g definujeme takýmto spôsobom dostaneme
+                    g(f (x)) = x
+                    (lebo g(f (x)) je práve ten prvok, ktorý sa zobrazí na f (x), čo je presne prvok x) a
+                    f (g(y)) = y
+                    (lebo g(y) sa, podľa definície zobrazenia g, zobrazí na y.)
+                </div>
+            </div>
+
+            <b>Tvrdenie:</b>
+            <p>
+                Nech f : X → Y a g : Y → Z sú bijekcie. Potom
+                (f <sup>−1</sup>)<sup>−1</sup> = f
+                (g ◦ f )<sup>−1</sup> = f <sup>−1</sup> ◦ g<sup>−1</sup>
+            </p>
+
+            <div class="toggle">
+                <b class="click">Dôkaz:</b>
+                <div class="hide">
+                    Použitím definície inverzného zobrazenia pre zobrazenie f máme f <sup>−1</sup> ◦ f = id<sub>X</sub> a
+                    f ◦ f <sup>−1</sup> = id<sub>Y</sub> .
+                    <br>To ale presne hovorí, že f je inverzné zobrazenie k f <sup>−1</sup>.
+                    <br>Podobne vidíme, že
+                    (f <sup>−1</sup> ◦ g<sup>−1</sup>) ◦ (g ◦ f ) = f <sup>−1</sup> ◦ (g<sup>−1</sup> ◦ g) ◦ f = f <sup>−1</sup> ◦ id<sub>Y</sub> ◦ f = f <sup>−1</sup> ◦ f = id<sub>X</sub> .
+                    <br>Analogickým spôsobom overíme, že (g ◦ f ) ◦ (f <sup>−1</sup> ◦ g<sup>−1</sup>) = id<sub>Z</sub> . Tým sme vlastne overili obe
+                    podmienky z definície inverzného zobrazenie k g ◦ f .
+                </div>
+            </div>
+
+            <b>Dôsledok:</b>
+            <p>
+                Ak f je bijekcia, tak aj f <sup>−1</sup> je bijekcia.
+            </p>
+
+
+        </article>
+
+        <article id="1.7">
+            <h2>Vzor a obraz množiny</h2>
+            <p>
+                Nech f : X → Y je zobrazenie, A ⊆ X, B ⊆ Y . Množinu
+                f [A] = {f (a); a ∈ A}
+                nazývame obrazom množiny A v zobrazení f . Množinu
+                f −1(B) = {x ∈ X; f (x) ∈ B}
+                nazývame vzorom množiny B v zobrazení f .
+            </p>
+
+        </article>
+    </section>
+
+
+    <section id="bin_op">
+        <h1>Binárne operácie</h1>
+        <article id="2.1">
+            <h2>Definícia</h2>
+            <a href="https://msleziak.com/vyuka/2023/alg/31binop.pdf">pdf z prednasky</a>
+            <p>
+                Binárna operácia ∗ na množine A je zobrazenie z množiny A × A do A.
+                <br>Namiesto ∗(a, b) budeme používať označenie a ∗ b, tento zápis budeme niekedy skracovať
+                ako ab.
+            </p>
+            <p>
+                Podobne ako pri zobrazeniach, môžeme binárnu operáciu chápať ako predpis, ktorý
+                však v tomto prípade priradí dvom prvkom z množiny A priradí nejaký prvok z tej istej
+                množiny.
+            </p>
+            <p>
+                Takisto zápis a ∗ b resp. ab zodpovedá tomu, na čo sme zvyknutí pri binárnych
+                operáciach, s ktorými sme sa stretli doteraz, ako je sčitovanie a násobenie.
+            </p>
+            <p>
+                Tiež si všimnime, že v definícii vystupujú usporiadané dvojice (prvky množiny X × Y ),
+                teda výsledok operácie a ∗ b a b ∗ a nemusí predstavovať ten istý prvok.
+            </p>
+        </article>
+        <article id="2.2">
+            <h2>Neutrálny prvok (NP)</h2>
+            <p>
+                Nech ∗ je binárna operácia na množine M . Hovoríme, že e ∈ M je <b>ľavý</b>
+                neutrálny prvok operácie ∗, ak pre všetky m ∈ M platí
+                e ∗ m = m.
+            </p>
+            <p>
+                Podobne, e je <b>pravý</b> neutrálny prvok, ak
+                m ∗ e = m pre každé m ∈ M
+            </p>
+            <p>
+                Ak e je súčasne ľavý aj pravý neutrálny prvok operácie ∗, hovoríme, že e je neutrálny
+                prvok.
+            </p>
+            <b>napriklad:</b>
+            <p>
+                0 je NP pre operáciu + (m+0 = 0+m = m) a 1 je NP pre operáciu * (m*1 = 1*m = m) na množine R.
+            </p>
+
+            <b>Tvrdenie:</b>
+            <p>
+                Nech ∗ je binárna operácia na množine M . Ak e<sub>1</sub> je jej ľavý neutrálny a
+                e<sub>2</sub> je jej pravý neutrálny prvok, tak e<sub>1</sub> = e<sub>2</sub>.
+                <br>Špeciálne, ak má binárna operácia ∗ na množine M neutrálny prvok, tak tento neutrálny
+                prvok je jediný.
+            </p>
+            <p>
+                Z toho špeciálne vyplýva, že ak máme viacero ľavých neutrálnych prvkov, žiadny prvok
+                nie je pravým neutrálnym prvkom a naopak.
+            </p>
+
+            <div class="toggle">
+                <b class="click">Dôkaz:</b>
+                <div class="hide">
+                    Ak e<sub>1</sub>, e<sub>2</sub> sú ľavý a pravý neutrálny prvok operácie ∗, tak
+                    e<sub>1</sub>
+                    (1)
+                    = e<sub>1</sub> ∗ e<sub>2</sub>
+                    (2)
+                    = e<sub>2</sub>,
+                    pričom rovnosť (1) platí vďaka tomu, že e<sub>2</sub> je pravý neutrálny prvok a rovnosť (2) platí vďaka
+                    tomu, že e<sub>1</sub> je ľavý neutrálny prvok.
+                </div>
+            </div>
+        </article>
+
+        <article id="2.3">
+            <h2>Komutatívna BO</h2>
+            <p>
+                Binárna operácia ∗ na množine M je komutatívna, ak pre všetky x, y ∈ M
+                platí
+                x ∗ y = y ∗ x.
+            </p>
+            <p>
+                Komutatívnosť vlastne znamená, že môžeme dvojice prvkov vymieňať. Väčšina operácií,
+                s ktorými budeme pracovať, je komutatívna.
+            </p>
+        </article>
+
+        <article id="2.4">
+            <h2>Asociatívna BO</h2>
+            <p>
+                Binárna operácia ∗ na množine M je asociatívna, ak pre všetky x, y, z ∈ M
+                platí (x ∗ y) ∗ z = x ∗ (y ∗ z)
+            </p>
+        </article>
+        <article id="2.5">
+            <h2>Inverzný prvok</h2>
+            <p>
+                Nech ∗ je binárna operácia na množine M . Nech a ∈ M a nech e je
+                neutrálny prvok operácie ∗. Prvok b ∈ M je inverzný k prvku a, ak platí
+                a ∗ b = b ∗ a = e
+            </p>
+            <p>
+                V prípade, že platí a ∗ b = e, b nazývame pravý inverzný prvok k a. Ak b ∗ a = e, tak b je ľavý
+                inverzný prvok k b.
+            </p>
+            <b>Tvrdenie:</b>
+            <p>
+                Nech ∗ je asociatívna operácia na množine M a ∗ má neutrálny prvok e.
+                Ak existuje inverzný prvok k a, tak je jednoznačne určený.
+            </p>
+
+            <p>
+                **trosku vyssie je poznamka o
+                <a href="https://msleziak.com/vyuka/2023/alg/alg.pdf#TVR.3.1.3">Catalanovom cisle</a>
+            </p>
+        </article>
+    </section>
+
+    <section id="grupy">
+        <h1>Grupy</h1>
+        <article id="3.1">
+            <h2>Definícia</h2>
+            Dvojica (G, ∗), kde G je množina a ∗ je binárna operácia na G, sa nazýva
+            grupa, ak
+            <br>(i) operácia ∗ je asociatívna,
+            <br>(ii) operácia ∗ má neutrálny prvok, (neutrálny prvok budeme spravidla označovať e)
+            <br>(iii) ku každému prvku g ∈ G existuje inverzný prvok vzhľadom na operáciu ∗. (Tento
+            inverzný prvok budeme označovať g<sup>−1.</sup>)
+            <p>poznámka:
+                <br>
+                Pretože požadujeme existenciu neutrálneho prvku e ∈ G, z definície grupy
+                automaticky vyplýva, že množina G je neprázdna, G ≠ ∅
+            </p>
+        </article>
+
+        <article id="3.3">
+            <h2>
+                Komutatívna grupa
+            </h2>
+            <p>
+                Grupa (G, ∗) sa nazýva komutatívna, ak operácia ∗ na G je komutatívna.
+                (Tiež sa používa termín abelovská grupa.)
+            </p>
+            <p>
+                Nie každá grupa je komutatívna. Príkladom nekomutatívnej grupy je grupa Sn všetkých
+                permutácií n-prvkovej množiny pre n ≥ 3 (úloha <a href="https://msleziak.com/vyuka/2023/alg/alg.pdf#ULO.3.2.2">3.2.2</a>).
+            </p>
+            <b>Veta:</b>
+            <p>
+                (Zákony o krátení). Ak (G, ∗) je grupa, tak pre ľubovoľné a, b, c ∈ G platí
+                <br>a ∗ b = a ∗ c ⇒ b = c
+                <br>b ∗ a = c ∗ a ⇒ b = c
+                <br>Inak povedané, zákony o krátení hovoria, že v grupe môžeme krátiť ľubovoľným prvkom
+                zľava aj sprava.
+            </p>
+            <b>Veta:</b>
+            <p>
+                Nech (G, ∗) je grupa. Potom pre ľubovoľné a, b ∈ G platí
+                <br>(a−1)−1 = a
+                <br>(a ∗ b)−1 = b−1 ∗ a−1
+            </p>
+        </article>
+        <article id="3.4">
+            <h2>
+
+            </h2>
+            <p>
+
+            </p>
+        </article>
+        <article id="3.2">
+            <h2>
+
+            </h2>
+            <p>
+
+            </p>
+        </article>
+        <article id="3.2">
+            <h2>
+
+            </h2>
+            <p>
+
+            </p>
+        </article>
+
+
+
+
+
+
+
+
+
+    <div class="toggle">
+        <b class="click">Dôkaz:</b>
+        <div class="hide">
+            ≠
+        </div>
+    </div>
+
+
+<script>
+    let t = document.querySelectorAll(".toggle");
+
+    t.forEach(element => {
+        let toHide = element.querySelectorAll(".hide")[0];
+       element.querySelectorAll(".click")[0].onclick = () => {
+           if (toHide.style.display === "block")
+               toHide.style.display = "none";
+           else
+               toHide.style.display = "block";
+       };
+    });
+</script>
+</body>
+</html>
