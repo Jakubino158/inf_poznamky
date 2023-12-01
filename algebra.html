@@ -18,6 +18,8 @@
     </style>
 </head>
 <body>
+obsahom tejto stranky su moje "poznamky" z algebry, poznamkoval som primarne zo skript <a href="https://msleziak.com/vyuka/2023/alg/alg.pdf">https://msleziak.com/vyuka/2023/alg/alg.pdf</a>
+
     <nav>
         <ul>
             <li>
@@ -44,10 +46,22 @@
                 </ul>
             </li>
             <li>
-                <a href="#bin_op">Grupy a polia</a>
+                <a href="#grupy">Grupy</a>
                 <ul>
-                    <li><a href="#2.1">Binárne operácie</a></li>
+                    <li><a href="#3.1">Definícia</a></li>
+                    <li><a href="#3.2">Komutatívna grupa</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="#polia">Polia</a>
+                <ul>
+                    <li><a href="#4.1">Definícia</a></li>
+                    <li><a href="#4.2">Definícia</a></li>
+                    <li><a href="#4.3">Definícia</a></li>
+                    <li><a href="#4.4">Definícia</a></li>
+                    <li><a href="#4.5">Definícia</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <section id="funkcia">
@@ -411,7 +425,7 @@
             </p>
         </article>
 
-        <article id="3.3">
+        <article id="3.2">
             <h2>
                 Komutatívna grupa
             </h2>
@@ -438,31 +452,91 @@
                 <br>(a ∗ b)−1 = b−1 ∗ a−1
             </p>
         </article>
-        <article id="3.4">
-            <h2>
+    </section>
 
-            </h2>
+    <section id="Polia">
+        <h1>Polia</h1>
+        <article id="4.1">
+            <h2>Definícia</h2>
             <p>
+                Nech F je množina, + a · sú binárne operácie na F . Hovoríme, že trojica (F, +, ·) je pole, ak
+                <br>(i) (F, +) je komutatívna grupa, jej neutrálny prvok budeme označovať 0;
+                <br>(ii) (F ∖ {0}, ·) je komutatívna grupa, jej neutrálny prvok budeme označovať 1 ();
+                <br>(iii) pre ľubovoľné a, b, c ∈ F platí (distributívnosť)
+                <br><span class="tab"></span>a(b + c) = ab + ac
+                <br><span class="tab"></span>(a + b)c = ac + bc
+            </p>
+            <p>
+                Pre inverzný prvok v grupe (F, +) budeme používať označenie −a, t.j. pre túto grupu
+                používame aditívny zápis (cize pomocou +). Prvok −a nazývame opačný prvok k prvku a.
+                <br>
+                Pre grupu (F ∖{0}, ·) budeme používať multiplikatívny zápis (cize pomocou ·), teda inverzný prvok k prvku
+                a ≠ 0 poľa F vzhľadom na operáciu · budeme značiť a<sup>−1</sup>.
+                <br>Ak použijeme termín inverzný prvok
+                v súvislosti s poľom a nešpecifikujeme binárnu operáciu, myslí sa tým práve prvok a<sup>−1</sup>.
+                Namiesto b + (−c) budeme používať stručnejší zápis b − c
+            </p>
+            <p>
+                O operáciach + a · v poli F budeme niekedy hovoriť ako o sčitovaní a násobení (súčte a
+                súčine), presne tak ako je to v najzákladnejších príkladoch polí.
+                <br>
+                Aby bolo jasné, ktorá operácia sa vykoná najskôr, mali by sme používať zápis ako napríklad (a.b) + (c.d). Budeme používať rovnakú konvenciu, aká je zaužívaná pre reálne čísla –
+                operácia · má vyššiu prioritu ako operácia +, teda predchádzajúci zápis môžeme stručnejšie
+                zapísať ako ab + cd
+            </p>
 
+            <b>Tvrdenie:</b>
+            <p>
+                Nech (F, +, ·) je pole. Potom pre a, b, c ∈ F platí (<a href="https://msleziak.com/vyuka/2023/alg/alg.pdf#Item.16">Dôkazy</a>)
+                <br>(i) a.0 = 0, 0.a = 0,
+                <br>(ii) a.b = b.a,
+                <br>(iii) 1.a = a.1 = a,
+                <br>(iv) (−a).b = −a.b,
+                <br>(v) (−a).(−b) = a.b,
+                <br>(vi) a.b = 0 ⇒ a = 0 ∨ b = 0,
+                <br>(vii) a.b = a.c ∧ a̸ = 0 ⇒ b = c,
+                <br>(viii) a.a = a ⇒ a = 0 ∨ a = 1
             </p>
         </article>
-        <article id="3.2">
+        <article id="4.2">
             <h2>
-
+                Pole Z<sub>n</sub>
             </h2>
             <p>
-
+                Nech n ∈ N, n ≥ 2. Množinu Z<sub>n</sub> definujeme ako Z<sub>n</sub> := {0, 1, . . . , n − 1}.
+                (Teda množina Z<sub>n</sub> obsahuje všetky možné zvyšky po delení číslom n (ozn. mod n))
+                Na množine Z<sub>n</sub> zavedieme operácie ⊕ a ⊙ predpisom
+                <br>a ⊕ b = (a + b) mod n,
+                <br>a ⊙ b = (ab) mod n,
             </p>
         </article>
-        <article id="3.2">
+        <article id="4.3">
             <h2>
-
+                Prvočísla
             </h2>
             <p>
+                Číslo n ∈ N, n > 1, nazývame zloženým číslom, ak <b>n = m.k</b> pre nejaké
+                m, k ∈ N také, že 1 < m, k < n.
+                <br>Ak n ∈ N, n > 1, nie je zložené, tak ho nazývame prvočíslo.
+                <br>Číslo 1 nepovažujeme ani za prvočíslo ani za zložené číslo.
+            </p>
+            <p>
+                dôležitá vlastnosť prvočísel:)
+                <br><b>p | mn ⇒ p | m ∨ p | n</b> (ak prvocislo p deli m*n, tak p deli m alebo p deli n)
+            </p>
+        </article>
 
+        <article id="4.4">
+            <h2>
+                Z<sub>p</sub> je pole
+            </h2>
+            <p>
+                Ak p je prvočíslo, tak (Zp, ⊕, ⊙) je pole.
+                <br>Tu je neskôr dôležitý aj <a href="https://msleziak.com/vyuka/2023/alg/alg.pdf#page.41">dôkaz</a>
             </p>
         </article>
     </section>
+
 
 
 
